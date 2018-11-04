@@ -71,7 +71,7 @@ client.on('message', function(message) {
     )
   message.channel.send("**تم ارسال الرابط برسالة خاصة**")
 
-message.author.send(`**مدة الرابط : يـوم
+message.author.send(`**مدة الرابط : يوم
  استخدامات الرابط : 25**`)
 
     }
