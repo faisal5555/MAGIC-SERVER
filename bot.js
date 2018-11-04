@@ -72,7 +72,7 @@ client.on('message', function(message) {
   message.channel.send("**تم ارسال الرابط برسالة خاصة**")
 
 message.author.send(`**مدة الرابط : يـوم
-دد استخدامات الرابط : 25**`)
+ استخدامات الرابط : 25**`)
 
     }
 });
