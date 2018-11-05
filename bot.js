@@ -8,8 +8,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : Programming codes ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Programming codes`,"http://twitch.tv/idk")
-client.user.setStatus("dnd")
+
 });
 
 client.on("message", async message => {
@@ -288,5 +287,157 @@ if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return mess
   }
  
 });
+
+
+
+client.on('message', message => {
+var prefix = "+";
+
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id == 410835593451405312)
+return;
+if (message.content.startsWith(prefix + 'مشغول')) {
+  if (message.author.id !== '400955088052420610') return message.react('⚠')
+client.user.setStatus('dnd');  
+message.react("✅")
+}
+                        
+ });
+
+
+client.on('message', message => {
+var prefix = "+";
+
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id == 410835593451405312)
+return;
+
+
+if (message.content.startsWith(prefix + 'متصل')) {
+  if (message.author.id !== '400955088052420610') return message.react('⚠')
+  client.user.setStatus('online');  
+message.react("✅")
+}
+                        
+ });
+
+
+client.on('message', message => {
+var prefix = "+";
+
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id == 410835593451405312)
+return;
+if (message.content.startsWith(prefix + 'فلخارج')) {
+   if (message.author.id !== '400955088052420610') return message.react('⚠')
+client.user.setStatus('idle');  
+message.react("✅")
+}
+                        
+ });
+
+
+client.on('message', message => {
+var prefix = "+";
+
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id == 410835593451405312)
+return;
+
+
+if (message.content.startsWith(prefix + 'مخفي')) {
+    if (message.author.id !== '400955088052420610') return message.react('⚠')
+client.user.setStatus('invisible');  
+message.react("✔")
+}
+                        
+ });
+
+
+const adminprefix = "+";
+const devs = ['400955088052420610'];
+client.on('message', message => {
+  var argresult = message.content.split(` `).slice(1).join(' ');
+    if (!devs.includes(message.author.id)) return;
+    
+if (message.content.startsWith(adminprefix + 'playing')) {
+  client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult} تم تغيير بلاينق البوت إلى **`);
+} else 
+  if (message.content.startsWith(adminprefix + 'setname')) {
+client.user.setUsername(argresult).then;
+    message.channel.sendMessage(`**${argresult}** : تم تغيير أسم البوت إلى`);
+return message.reply("**لا يمكنك تغيير الاسم يجب عليك الانتظآر لمدة ساعتين . **");
+} else
+  if (message.content.startsWith(adminprefix + 'setavatar')) {
+client.user.setAvatar(argresult);
+  message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+      } else     
+if (message.content.startsWith(adminprefix + 'streaming')) {
+  client.user.setGame(argresult, "https://www.twitch.tv/idk");
+    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`);
+}
+
+});
+
+
+
+
+
+client.on("message", message => {
+      if (message.guild) {
+      let embed = new Discord.RichEmbed()
+      let args = message.content.split(' ').slice(1).join(' ');
+      if(message.content.split(' ')[0] ==prefix + "+bc") {
+      if (message.author.bot) return;
+        if(!message.member.hasPermission('ADMINISTRATOR')) return;
+      if (!args[1]) {
+              message.channel.send(`${prefix}bc <message>`);
+return;
+          
+  }
+const client = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)   
+             .setTitle(':hotsprings: | جاري ارسال رسالتك ') 
+             .addBlankField(true)
+             .addField(':two_men_holding_hands: | عدد الاعضاء المرسل لهم ', message.guild.memberCount , true)        
+             .addField(':incoming_envelope: | الرسالة ', args)
+             .setColor('RANDOM')  
+              message.channel.sendEmbed(client);  
+                 message.channel.send('لتأكيد الرسالة(نعم/لا)');
+
+      let user = message.author;
+const collector = new Discord.MessageCollector(message.channel, m => user === user, { time: 10000 }) 
+     collector.on('collect', message => {
+      if (message.content == "نعم") {
+              message.guild.members.forEach(m => {
+      var bc = new Discord.RichEmbed()
+             .setAuthor(message.author.username, message.author.avatarURL)
+             .addField(' الـسيرفر', `${message.guild.name}`,true)
+             .addField(' الـمرسل ', `${message.author.username}#${message.author.discriminator}`,true)
+             .addField(' الرسالة ', args)
+             .setThumbnail(message.guild.iconURL)
+             .setColor('RANDOM')
+             m.send(`${m}`,{embed: bc});
+ })                
+  } else if (message.content == "لا") {
+return message.reply('لن يتم ارسال الرسالة');
+  }                          
+});
+  }
+  } else {
+return;
+  }        
+});
+
+
 
 client.login(process.env.BOT_TOKEN);
