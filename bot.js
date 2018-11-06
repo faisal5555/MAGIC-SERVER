@@ -490,7 +490,7 @@ client.on("guildMemberAdd", (member) => {
     console.log('made it till here!');
     var guild;
     while (!guild)
-        guild = client.guilds.find("name", "Programming codes")
+	    
     guild.fetchInvites().then((data) => {
         data.forEach((Invite, key, map) => {
             var Inv = Invite.code;
@@ -499,7 +499,7 @@ client.on("guildMemberAdd", (member) => {
                     console.log(3);
                     console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
  channel.send(`  **تم دعوته من قبل ${Invite.inviter} ** 
- :link:  https://discord.gg/${Invite.code}`)            
+
  }
             dat[Inv] = Invite.uses;
         })
