@@ -406,7 +406,7 @@ return;
   }
 const client = new Discord.RichEmbed()
              .setAuthor(message.author.username, message.author.avatarURL)   
-             .setTitle(':hotsprings: | جاري ارسال رسالتك ') 
+             .setTitle(' جاري ارسال رسالتك ') 
              .addBlankField(true)
              .addField(':two_men_holding_hands: | عدد الاعضاء المرسل لهم ', message.guild.memberCount , true)        
              .addField(':incoming_envelope: | الرسالة ', args)
