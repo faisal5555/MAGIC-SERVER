@@ -11,52 +11,7 @@ client.on('ready', () => {
 
 });
 
-client.on("message", async message => {
-        if(!message.channel.guild) return;
- var prefix= "+";
-        if(message.content.startsWith(prefix + 'server')) {
-        let guild = message.guild
-        let channel = message.channel
-        let guildicon = guild.icon_url
-        let members = guild.memberCount
-        let bots = guild.members.filter(m => m.user.bot).size
-        let humans = members - bots
-        let allchannels = guild.channels.size
-        let textchannels = guild.channels.filter(e => e.type === "text")
-        let voicechannels = guild.channels.filter(e => e.type === "voice")
-          var embed = new Discord.RichEmbed()
-          .setColor("#000000")
-          .setTitle(`معلومات عن السيرفر`)
-          .setDescription(`معلومات عن : ${guild.name}`)
-          .addField("صاحب السيرفر :", `${guild.owner}`, true)
-          .addField("أيدي السيرفر :", `${guild.id}`, true)
-          .addField("موقع السيرفر :", `${guild.region}`, true)
-          .addField("مستوى حماية السيرفر :", `${guild.verificationLevel}`, true)
-          .addField("عدد الرومات الصوتية :", `${voicechannels.size}`, true)
-          .addField("عدد الرومات الكتابية :", `${textchannels.size}`, true)
-          .addField("عدد اعضاء السيرفر :", `${members}`, true)
-          .addField("عدد البوتات :", `${bots}`, true)
-          .addField("عدد الاشخاص :", `${humans}`, true)
-          .addField("عدد رتب السيرفر :", `${guild.roles.size}`, true)
-          .addField(`أيموجيات الخاصة بالسيرفر : (${guild.emojis.size})`, `- ${guild.emojis.array()}`, true)
-          .setFooter(`تم انشاء هذه السيرفر في: ${guild.createdAt}`)
- 
-       message.channel.send({ embed: embed });
- 
-      }
-    });
 
-client.on('message', function(message) {
-    if (message.content == "سحب") {
-        if (message.member.hasPermission("MANAGE_MESSAGES")) {
-            message.channel.fetchMessages()
-               .then(function(list){
-                    message.channel.bulkDelete(list);
-                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
-        }
-    }
-
-});
 	
   client.on('message', message => {
     if (message.content.startsWith("رابط")) {
@@ -350,6 +305,8 @@ return;
 
 
 
+
+
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', 'chat');
     let memberavatar = member.user.avatarURL
@@ -371,48 +328,83 @@ client.on('guildMemberAdd', member => {
    
       channel.sendEmbed(embed);
     });
-    
-var dat = JSON.parse("{}");
-function forEachObject(obj, func) {
-    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
-}
-client.on("ready", () => {
-    var guild;
-    while (!guild)
-        guild = client.guilds.find("name", "Programming codes")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            dat[Inv] = Invite.uses;
-        })
-    })
-})
-client.on("guildMemberAdd", (member) => {
-    let channel = member.guild.channels.find('name', 'chat');
-    if (!channel) {
-        console.log("!channel fails");
-        return;
-    }
-    if (member.id == client.user.id) {
-        return;
-    }
-    console.log('made it till here!');
-    var guild;
-    while (!guild)
-        guild = client.guilds.find("name", "Programming codes")
-    guild.fetchInvites().then((data) => {
-        data.forEach((Invite, key, map) => {
-            var Inv = Invite.code;
-            if (dat[Inv])
-                if (dat[Inv] < Invite.uses) {
-                    console.log(3);
-                    console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
- channel.send(`  **تم دعوته من قبل ${Invite.inviter} ** 
- :link:  https://discord.gg/${Invite.code}`)            
- }
-            dat[Inv] = Invite.uses;
-        })
-    })
+
+client.on("ready", () => {
+
+    var guild;
+
+    while (!guild)
+
+        guild = client.guilds.get("486718537616850964");
+
+    guild.fetchInvites().then((data) => {
+
+        data.forEach((Invite, key, map) => {
+
+            var Inv = Invite.code;
+
+            dat[Inv] = Invite.uses;
+
+        });
+
+    });
+
+});
+
+ 
+
+ 
+
+ 
+
+client.on("guildMemberAdd", (member) => {
+
+    let channel = member.guild.channels.get("509340242499731468");
+
+    if (!channel) {
+
+        console.log("!the channel id it's not correct");
+
+        return;
+
+    }
+
+    if (member.id == client.user.id) {
+
+        return;
+
+    }
+
+    console.log('-');
+
+    var guild;
+
+    while (!guild)
+
+        guild = client.guilds.get("486718537616850964");
+
+    guild.fetchInvites().then((data) => {
+
+        data.forEach((Invite, key, map) => {
+
+            var Inv = Invite.code;
+
+            if (dat[Inv])
+
+                if (dat[Inv] < Invite.uses) {
+
+ channel.send(`تم دعوته بواسطة  ${Invite.inviter} `) ;        
+
+ }
+
+            dat[Inv] = Invite.uses;
+
+       
+
+       });
+
+    });
+
 });
 
 
@@ -484,18 +476,21 @@ client.on('message', async message =>{
 
 
 
-client.on('message', function(message) {
-    if (message.content == "مسح") {
-        if (message.member.hasPermission("MANAGE_MESSAGES")) {
-            message.channel.fetchMessages()
-               .then(function(list){
-                    message.channel.bulkDelete(list);
-                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
-        }
-    }
+client.on('message', message => {
+    let args = message.content.split(" ").slice(1);
+if (message.content.startsWith("مسح")) {
+ let args = message.content.split(" ").slice(1)
+    let messagecount = parseInt(args);
+    if (args > 100) return message.reply("**يجب ان يكون عدد المسح أقل من 100 .**").then(messages => messages.delete(5000))
+    if (!messagecount) return message.reply("**أختر كميه الرسائل المراد مسحها .**").then(messages => messages.delete(5000))
+    message.channel.fetchMessages({limit: messagecount + 1}).then(messages => message.channel.bulkDelete(messages));
+    message.channel.send(`\`${args}\` : __عدد الرسائل التي تم مسحها __ `).then(messages => messages.delete(5000));
+  }
+  });
 
-});
-	
+
+
+
 
 
 client.login(process.env.BOT_TOKEN);
