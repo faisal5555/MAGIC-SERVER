@@ -3,7 +3,7 @@ const client = new Discord.Client();
 var prefix = "+";
 client.on('ready', () => {
    console.log(`----------------`);
-      console.log(`Desert Bot- Script By : Programming codes`);
+      console.log(`Desert Bot- Script By :  MAGIC SERVER`);
         console.log(`----------------`);
       console.log(`ON ${client.guilds.size} Servers '     Script By :  MAGIC SERVER' `);
     console.log(`----------------`);
