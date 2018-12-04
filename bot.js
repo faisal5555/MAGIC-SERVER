@@ -5,7 +5,7 @@ client.on('ready', () => {
    console.log(`----------------`);
       console.log(`Desert Bot- Script By : Programming codes`);
         console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers '     Script By : Programming codes ' `);
+      console.log(`ON ${client.guilds.size} Servers '     Script By :  MAGIC SERVER' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
 
