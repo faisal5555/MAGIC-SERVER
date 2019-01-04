@@ -9,7 +9,6 @@ client.on('ready', () => {
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`MAGIC SHOP`,"http://twitch.tv/idk")
-client.user.setStatus("dnd")
 });
 
 
