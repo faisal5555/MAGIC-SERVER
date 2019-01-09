@@ -8,7 +8,6 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By :  MAGIC SERVER' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`MAGIC SHOP`,"http://twitch.tv/idk")
 });
 
 
@@ -153,17 +152,17 @@ client.on('message', (message) => {
 
 
 
-
 client.on('message', message => {
-var prefix = "#";
+var prefix = "+";
 
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
   if (message.author.id == 410835593451405312)
 return;
-if (message.content.startsWith(prefix + 'مشغول')) {
-  if (message.author.id !== '400955088052420610') return message.react('⚠')
+
+if (message.content.startsWith(prefix + 'dnd')) {
+  if (message.author.id !== '532625014382526467') return message.react('⚠')
 client.user.setStatus('dnd');  
 message.react("✅")
 }
@@ -181,25 +180,24 @@ var prefix = "#";
 return;
 
 
-if (message.content.startsWith(prefix + 'متصل')) {
-  if (message.author.id !== '400955088052420610') return message.react('⚠')
+if (message.content.startsWith(prefix + 'online')) {
+  if (message.author.id !== '532625014382526467') return message.react('⚠')
   client.user.setStatus('online');  
 message.react("✅")
 }
                         
  });
 
-
 client.on('message', message => {
-var prefix = "#";
+var prefix = "+";
 
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
   if (message.author.id == 410835593451405312)
 return;
-if (message.content.startsWith(prefix + 'فلخارج')) {
-   if (message.author.id !== '400955088052420610') return message.react('⚠')
+if (message.content.startsWith(prefix + 'idle')) {
+   if (message.author.id !== '532625014382526467') return message.react('⚠')
 client.user.setStatus('idle');  
 message.react("✅")
 }
@@ -208,7 +206,7 @@ message.react("✅")
 
 
 client.on('message', message => {
-var prefix = "#";
+var prefix = "+";
 
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
@@ -217,8 +215,8 @@ var prefix = "#";
 return;
 
 
-if (message.content.startsWith(prefix + 'مخفي')) {
-    if (message.author.id !== '400955088052420610') return message.react('⚠')
+if (message.content.startsWith(prefix + 'invisible')) {
+    if (message.author.id !== '532625014382526467') return message.react('⚠')
 client.user.setStatus('invisible');  
 message.react("✔")
 }
@@ -226,8 +224,11 @@ message.react("✔")
  });
 
 
-const adminprefix = "#";
-const devs = ['400955088052420610'];
+
+
+
+const adminprefix = "#";;
+const devs = ['532625014382526467'];
 client.on('message', message => {
   var argresult = message.content.split(` `).slice(1).join(' ');
     if (!devs.includes(message.author.id)) return;
@@ -247,8 +248,16 @@ client.user.setAvatar(argresult);
       } else     
 if (message.content.startsWith(adminprefix + 'streaming')) {
   client.user.setGame(argresult, "https://www.twitch.tv/idk");
-    message.channel.sendMessage(`**تم تغيير تويتش البوت إلى  ${argresult}**`);
-}
+    message.channel.sendMessage(`**تم تغيير ستريم البوت إلى  ${argresult}**`);
+} else
+ if (message.content.startsWith(adminprefix + 'listening')) {
+  client.user.setActivity(argresult, {type: 'LISTENING'})
+    message.channel.sendMessage(`**تم تغيير ليسنق البوت إلى  ${argresult}**`);
+} else
+ if (message.content.startsWith(adminprefix + 'watching')) {
+  client.user.setActivity(argresult, {type: 'WATCHING'})
+    message.channel.sendMessage(`**تم تغيير واتشنق البوت إلى  ${argresult}**`);
+} 
 
 });
 
